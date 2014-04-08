@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Oracle Table Creator</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Oracle Table Creator">
+		<meta name="author" content="Cem YILDIZ <hello@cem-yildiz.com">
+		
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="table-creator.css">
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+		<script src="https://github.com/makeusabrew/bootbox/releases/download/v4.2.0/bootbox.min.js"></script>
+		<script src="table-creator.js"></script>
+	</head>
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<a href="#" class="navbar-brand" >Oracle Table Creator</a>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="starter-template">
+				<form id="frm-create" class="create">
+					<div class="table-responsive">
+						<table class="table table-striped table-bordered">
+							<thead>
+								<td><label for="table-name">Table name</label></td>
+								<td><label for="autonumber">Add autonumber field and trigger</label></td>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input type="text" maxlength="50" name="table-name" id="table-name" placeholder="Table name" /></td>
+									<td><input type="text" maxlength="50" name="autonumber-field" id="autonumber-field" placeholder="Field name" /></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="table-responsive">
+						<table class="table table-striped table-bordered">
+							<thead>
+								<th>Field Name</th>
+								<th>Field Type</th>
+								<th>Parameter</th>
+								<th>Default Value</th>
+								<th>Not null</th>
+							</thead>
+							<tbody id="table-content"></tbody>
+						</table>
+					</div>
+					<p>
+						<input type="checkbox" name="create-history" id="create-history" /><label for="create-history">Add created_by, create_date, updated_by, update_date fields and triggers</label>
+					</p>
+					<p>
+						<input type="checkbox" name="synonym" id="synonym" /><label for="synonym">Create public synonym</label>
+					</p>
+					<p>
+						grant &nbsp;&nbsp;&nbsp;
+						<input type="checkbox" name="delete" id="delete" class="grant" /><label for="delete">delete</label>&nbsp;&nbsp;&nbsp;
+						<input type="checkbox" name="insert" id="insert" class="grant" /><label for="insert">insert</label>&nbsp;&nbsp;&nbsp;
+						<!--<input type="checkbox" name="references" id="references" class="grant" /><label for="references">references</label>&nbsp;&nbsp;&nbsp;//-->
+						<input type="checkbox" name="select" id="select" class="grant" /><label for="select">select</label>&nbsp;&nbsp;&nbsp;
+						<input type="checkbox" name="update" id="update" class="grant" /><label for="update">update</label>&nbsp;&nbsp;&nbsp;
+						to PUBLIC.
+					</p>
+					<div class="table-header">Indexes</div>
+					<div class="table-responsive">
+						<table class="table table-striped table-bordered">
+							<thead>
+								<th>Unique</th>
+								<th>Fields</th>
+								<th>Index Name</th>
+							</thead>
+							<tbody id="index-content"></tbody>
+						</table>
+					</div>
+					<div class="table-header">Foreign Keys</div>
+					<div class="table-responsive">
+						<table class="table table-striped table-bordered">
+							<thead>
+								<th>Fields</th>
+								<th>Parent Table</th>
+								<th>Parent Table Fields</th>
+							</thead>
+							<tbody id="foreign-content"></tbody>
+						</table>
+					</div>
+					<div class="table-header">Primary Key</div>
+					<div class="table-responsive">
+						<table class="table table-striped table-bordered">
+							<thead>
+								<th>Primary Key Fields</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input type="text" name="pk-field" id="pk-field" placeholder="Field name" /></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="clearfix form-actions">
+						<div class="col-md-offset-3 col-md-9">
+							<button type="submit" class="btn btn-info">
+							<i class="icon-ok bigger-110"></i>
+							Generate SQL
+							</button>
+							&nbsp; &nbsp; &nbsp;
+							<button type="reset" class="btn">
+							<i class="icon-undo bigger-110"></i>
+							Reset
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
